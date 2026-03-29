@@ -34,7 +34,6 @@ Overall accuracy can look “good” while some demographic groups experience **
 - how to report **worst-group performance** and **disparity gaps**  
 - intersectional effects (e.g., **race × gender**) similar to **Gender Shades** style analysis  
 
----
 
 ## Fairness metrics reported
 
@@ -55,7 +54,6 @@ We compute group-disaggregated metrics and bias summaries:
 - Equalized odds gaps (TPR/FPR gaps)  
 - NIST-style reporting: TPR at fixed FPR using ROC curves (when probabilities are available)  
 
----
 
 ## How to run (recommended: Kaggle)
 
@@ -72,7 +70,6 @@ We compute group-disaggregated metrics and bias summaries:
    - `modelU_resnet50_unbiased.pth`
    - `biased_train.csv`, `train_unbiased.csv`, `val.csv` (if exported)
 
----
 
 ## Deployment (Replit / Gradio)
 
@@ -89,14 +86,12 @@ Recommended UI:
 
 If you want, I can provide a ready-to-run `app.py` + `requirements.txt` for Replit.
 
----
 
 ## Notes & limitations
 - This project predicts **gender** as an attribute classification task and is intended for **educational bias measurement**, not real-world identity verification.  
 - Demographic labels may contain noise and may not represent all identities.  
 - Face-based models can be harmful in high-stakes uses; this repo is focused on **measurement + governance learning**.  
 
----
 
 ## Credits
 FairFace dataset and labels: created by the FairFace authors (see the original FairFace repository and paper for details).
