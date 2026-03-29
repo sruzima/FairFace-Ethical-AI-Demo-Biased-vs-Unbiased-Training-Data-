@@ -15,7 +15,7 @@ This repo demonstrates how **biased training data** can produce **unequal model 
 - `biased_train.csv` — biased training split used for Model A  
 - `train_unbiased.csv` — unbiased training split used for Model U  
 - `val.csv` — validation split  
-- `fairface_label_train.csv`, `fairface_label_val.csv` — original FairFace label files (if included)
+- `fairface_label_train.csv`, `fairface_label_val.csv` — original FairFace label files
 
 ### Notebook
 End-to-end Kaggle notebook that:
@@ -48,30 +48,30 @@ We compute group-disaggregated metrics and bias summaries:
 - Accuracy by race × gender  
 - Worst intersectional group accuracy  
 - Intersectional disparity gap  
+ 
+  
+## How to run (recommended workflow)
 
-### Optional (governance-style)
-- FPR / FNR by group  
-- Equalized odds gaps (TPR/FPR gaps)  
-- NIST-style reporting: TPR at fixed FPR using ROC curves (when probabilities are available)  
+1. Open the project notebook in your preferred environment (e.g., Jupyter Notebook, VS Code, Kaggle, or Google Colab).
+
+2. Make sure the FairFace data is available locally or mounted in your environment, including:
+   - Image folders (e.g., `fairface-img-margin025` or `fairface-img-margin125`)
+   - Label files: `fairface_label_train.csv`, `fairface_label_val.csv`
+
+3. Update the dataset paths in the notebook to match your environment. For example:
+   - `DATASET_DIR=<path-to-your-fairface-dataset-root>`
+   - `IMAGE_ROOT=<path-to-your-selected-image-folder>`
+
+4. Run the notebook cells from top to bottom (or use “Run All”).
+
+5. After training finishes, collect the generated artifacts (exact filenames may vary depending on your configuration):
+   - Model checkpoints: `modelA_resnet50_biased.pth`, `modelU_resnet50_unbiased.pth`
+   - Exported split CSVs (if enabled): `biased_train.csv`, `train_unbiased.csv`, `val.csv`
+
+6. (Optional) Use the saved `.pth` files to deploy a small inference demo (e.g., Gradio on Replit) for live bias vs unbiased comparison.
 
 
-## How to run (recommended: Kaggle)
-
-1. Open the notebook in Kaggle.  
-2. Add the dataset:
-   - `fairface-img-margin025` (recommended) or `margin125`
-   - `fairface_label_train.csv`, `fairface_label_val.csv`
-3. Set paths (example):
-   - `DATASET_DIR=/kaggle/input/fairface_aml`
-   - `IMAGE_ROOT=/kaggle/input/fairface_aml/fairface-img-margin025`
-4. Run all cells.  
-5. Download outputs from the Kaggle **Output** panel:
-   - `modelA_resnet50_biased.pth`
-   - `modelU_resnet50_unbiased.pth`
-   - `biased_train.csv`, `train_unbiased.csv`, `val.csv` (if exported)
-
-
-## Deployment (Replit / Gradio)
+## Deployment (Replit / Gradio or any prefered options)
 
 You can deploy a lightweight demo app using:
 
@@ -84,14 +84,13 @@ Recommended UI:
 - side-by-side prediction comparison (Biased vs Unbiased)  
 - dataset bias explorer (race × gender charts)  
 
-If you want, I can provide a ready-to-run `app.py` + `requirements.txt` for Replit.
-
 
 ## Notes & limitations
-- This project predicts **gender** as an attribute classification task and is intended for **educational bias measurement**, not real-world identity verification.  
-- Demographic labels may contain noise and may not represent all identities.  
-- Face-based models can be harmful in high-stakes uses; this repo is focused on **measurement + governance learning**.  
+- This project predicts **race** as an attribute classification task and is intended for **educational bias measurement and governance learning**, not real-world identity verification.  
+- Fairness analysis is reported for both **race** groups and **intersectional groups (race × gender)** to highlight how disparities can appear at multiple levels.  
+- Demographic labels may contain noise, may be imperfect proxies, and may not represent all identities or contexts.  
+- Face-based models can be harmful in high-stakes uses; this repo focuses on **measurement, transparency, and responsible evaluation practices** rather than deployment for real-world decision-making.
 
 
 ## Credits
-FairFace dataset and labels: created by the FairFace authors (see the original FairFace repository and paper for details).
+FairFace dataset and labels: created by the FairFace authors (see the original FairFace repository and paper for details at https://github.com/joojs/fairface ).
