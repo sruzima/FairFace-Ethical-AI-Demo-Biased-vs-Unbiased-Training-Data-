@@ -2,7 +2,6 @@
 
 This repo demonstrates how **biased training data** can produce **unequal model performance across demographic groups** and how training on **unbiased/original data** reduces that harm. Using the **FairFace** dataset, we train two **ResNet50** gender-classification models and measure fairness with **race** and **race × gender** metrics.
 
----
 
 ## What’s in this repo
 
@@ -25,7 +24,6 @@ End-to-end Kaggle notebook that:
 - evaluates fairness  
 - exports `.pth` model files + CSV splits  
 
----
 
 ## Why this matters (Ethical AI & Governance)
 
