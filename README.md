@@ -1,0 +1,2 @@
+# FairFace-Ethical-AI-Demo-Biased-vs-Unbiased-Training-Data-
+The FairFace Ethical AI Demo compares two ResNet50 gender models. One is trained on intentionally biased data with race and gender imbalances, while the other uses the original, unbiased data. The demo measures fairness using group and intersectional metrics, focusing on worst-group performance and disparity gaps. It also provides .pth model files
