@@ -55,7 +55,7 @@ We compute group-disaggregated metrics and bias summaries:
 1. Open the project notebook in your preferred environment (e.g., Jupyter Notebook, VS Code, Kaggle, or Google Colab).
 
 2. Make sure the FairFace data is available locally or mounted in your environment, including:
-   - Image folders (e.g., `fairface-img-margin025` or `fairface-img-margin125`)
+   - Image folders (e.g., `fairface-img-margin025` (https://github.com/joojs/fairface)
    - Label files: `fairface_label_train.csv`, `fairface_label_val.csv`
 
 3. Update the dataset paths in the notebook to match your environment. For example:
@@ -68,8 +68,6 @@ We compute group-disaggregated metrics and bias summaries:
    - Model checkpoints: `modelA_resnet50_biased.pth`, `modelU_resnet50_unbiased.pth`
    - Exported split CSVs (if enabled): `biased_train.csv`, `train_unbiased.csv`, `val.csv`
 
-6. (Optional) Use the saved `.pth` files to deploy a small inference demo (e.g., Gradio on Replit) for live bias vs unbiased comparison.
-
 
 ## Deployment (Replit / Gradio or any prefered options)
 
@@ -77,7 +75,6 @@ You can deploy a lightweight demo app using:
 
 - `modelA_resnet50_biased.pth`
 - `modelU_resnet50_unbiased.pth`
-- (optional) `biased_train.csv` / `train_unbiased.csv` to show training-data bias charts
 
 Recommended UI:
 - image upload  
